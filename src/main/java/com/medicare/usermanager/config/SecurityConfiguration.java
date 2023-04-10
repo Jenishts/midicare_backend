@@ -27,12 +27,19 @@ public class SecurityConfiguration {
 
     private static final String[] ADMIN_WHITE_LIST_URLS={
 
-            "/auth/admin"
+            "/auth/admin",
+            "/product/add",
+            "/product/delete/**",
+            "/product/list"
     };
 
     private static final String[] USER_WHITE_LIST_URLS={
 
-            "/auth/user"
+            "/auth/user",
+            "/auth/checking",
+            "/product",
+            "/cart/**",
+            "/cart/remove/**"
     };
 
     private final AuthenticationProvider authProvider;

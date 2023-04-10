@@ -4,8 +4,10 @@ import com.medicare.usermanager.auth.AuthenticationResponse;
 import com.medicare.usermanager.auth.AuthenticationService;
 import com.medicare.usermanager.auth.RegisterRequest;
 import com.medicare.usermanager.auth.authenticationRequest;
+import com.medicare.usermanager.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -38,5 +40,11 @@ public class userController {
     @GetMapping("/admin")
     public ResponseEntity<String> userAdmin(){
         return ResponseEntity.ok("Hi, I am a Admin, I don't have access to User login");
+    }
+
+
+    @GetMapping("/checking")
+    public ResponseEntity<String> usercheck(@AuthenticationPrincipal User user){
+        return ResponseEntity.ok("Hi, I am a Admin, I don't have access to User login" + user.getEmail());
     }
 }
